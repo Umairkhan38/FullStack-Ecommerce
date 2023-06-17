@@ -13,8 +13,7 @@ import {
 import SignupPage from './Pages/SignupPage';
 import CartPage from './Pages/CartPage';
 import CheckoutPage from './Pages/CheckoutPage';
-import ProductDetail from './features/product-list/Components/ProductDetails';
-
+import ProductDetailPage from './Pages/ProductDetailPage';
 
 
 const router = createBrowserRouter([
@@ -40,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/productDetail",
-    element: <ProductDetail />
+    element: <ProductDetailPage />
   }
 ]);
 

@@ -38,6 +38,7 @@ function NavBar({ children }) {
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
+                  <Link to ='/'>
                   <div className="flex items-center">
                     <div className="flex-shrink-0 bg-white p-1.5 rounded-3xl">
                       <img
@@ -65,6 +66,7 @@ function NavBar({ children }) {
                       </div>
                     </div>
                   </div>
+                  </Link>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
                     <Link to='/cart'>

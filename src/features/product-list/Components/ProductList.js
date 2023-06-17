@@ -1,15 +1,11 @@
-import React, {Fragment, useState } from 'react';
+import React, {Fragment, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import {
-  increment,
-  incrementAsync,
-  selectCount
-} from '../ProductListSlice';
+import {fetchAllProductsAsync, fetchProductsByFiltersAsync, selectAllProducts} from '../ProductListSlice';
 import styles from '../ProductList.module.css';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom';
 
 
@@ -23,7 +19,7 @@ const items = [
  function ProductList() {
   const dispatch = useDispatch();
 
-  const products = [
+  const oldProducts = [
     {
       id: 1,
       name: 'Basic Tee',
@@ -62,8 +58,7 @@ const items = [
     },
   ]
 
-
-
+  
   const sortOptions = [
     { name: 'Most Popular', href: '#', current: true },
     { name: 'Best Rating', href: '#', current: false },
@@ -73,48 +68,99 @@ const items = [
   ]
  
   const filters = [
-    {
-      id: 'color',
-      name: 'Color',
-      options: [
-        { value: 'white', label: 'White', checked: false },
-        { value: 'beige', label: 'Beige', checked: false },
-        { value: 'blue', label: 'Blue', checked: true },
-        { value: 'brown', label: 'Brown', checked: false },
-        { value: 'green', label: 'Green', checked: false },
-        { value: 'purple', label: 'Purple', checked: false },
-      ],
-    },
+
     {
       id: 'category',
       name: 'Category',
       options: [
-        { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-        { value: 'sale', label: 'Sale', checked: false },
-        { value: 'travel', label: 'Travel', checked: true },
-        { value: 'organization', label: 'Organization', checked: false },
-        { value: 'accessories', label: 'Accessories', checked: false },
+        { value: 'smartphones', label: 'smartphones', checked: false },
+        { value: 'laptops', label: 'laptops', checked: false },
+        { value: 'fragrances', label: 'fragrances', checked: false },
+        { value: 'skincare', label: 'skincare', checked: false },
+        { value: 'groceries', label: 'groceries', checked: false },
+        { value: 'home-decoration', label: 'home decoration', checked: false }
+        
       ],
     },
+
     {
-      id: 'size',
-      name: 'Size',
+      id: 'brand',
+      name: 'Brands',
       options: [
-        { value: '2l', label: '2L', checked: false },
-        { value: '6l', label: '6L', checked: false },
-        { value: '12l', label: '12L', checked: false },
-        { value: '18l', label: '18L', checked: false },
-        { value: '20l', label: '20L', checked: false },
-        { value: '40l', label: '40L', checked: true },
+        { value: 'Apple', label: 'Apple', checked: false } ,
+        { value: 'Samsung', label: 'Samsung', checked: false } ,
+        { value: 'OPPO', label: 'OPPO', checked: false } ,
+        { value: 'Huawei', label: 'Huawei', checked: false } ,
+        {
+          value: 'Microsoft Surface',
+          label: 'Microsoft Surface',
+          checked: false
+        } ,
+        { value: 'Infinix', label: 'Infinix', checked: false } ,
+        { value: 'HP Pavilion', label: 'HP Pavilion', checked: false } ,
+        {
+          value: 'Impression of Acqua Di Gio',
+          label: 'Impression of Acqua Di Gio',
+          checked: false
+        } ,
+        { value: 'Royal_Mirage', label: 'Royal_Mirage', checked: false } ,
+        {
+          value: 'Fog Scent Xpressio',
+          label: 'Fog Scent Xpressio',
+          checked: false
+        } ,
+        { value: 'Al Munakh', label: 'Al Munakh', checked: false } ,
+        { value: 'Lord - Al-Rehab', label: 'Lord   Al Rehab', checked: false } ,
+        { value: "L'Oreal Paris", label: "L'Oreal Paris", checked: false } ,
+        { value: 'Hemani Tea', label: 'Hemani Tea', checked: false } ,
+        { value: 'Dermive', label: 'Dermive', checked: false } ,
+        {
+          value: 'ROREC White Rice',
+          label: 'ROREC White Rice',
+          checked: false
+        } ,
+        { value: 'Fair & Clear', label: 'Fair & Clear', checked: false } ,
+        { value: 'Saaf & Khaas', label: 'Saaf & Khaas', checked: false } ,
+        { value: 'Bake Parlor Big', label: 'Bake Parlor Big', checked: false } ,
+        {
+          value: 'Baking Food Items',
+          label: 'Baking Food Items',
+          checked: false
+        } ,
+        { value: 'fauji', label: 'fauji', checked: false } ,
+        { value: 'Dry Rose', label: 'Dry Rose', checked: false } ,
+        { value: 'Boho Decor', label: 'Boho Decor', checked: false } ,
+        { value: 'Flying Wooden', label: 'Flying Wooden', checked: false } ,
+        { value: 'LED Lights', label: 'LED Lights', checked: false } ,
+        { value: 'luxury palace', label: 'luxury palace', checked: false } ,
+        { value: 'Golden', label: 'Golden', checked: false } ,
+        
       ],
     },
-  ]
   
+  ]
+
+const [filter,setFilter]=useState({})
+
+useEffect(() => {
+  dispatch(fetchAllProductsAsync())
+}, [dispatch]);
+
+ 
+const handleFilter=(e,section,option)=>{
+  let newFilter= {...filter,[section.id]:option.value}
+  setFilter(newFilter)
+  dispatch(fetchProductsByFiltersAsync(newFilter))
+console.log(section.id,option.value);
+}
+
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
   
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const products = useSelector(selectAllProducts)
 
   return (
     <div>
@@ -190,6 +236,7 @@ const items = [
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
+                                      onChange={e=>console.log(e.target.value)}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -312,6 +359,7 @@ const items = [
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
+                                  onChange={e=>handleFilter(e,section,option)}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
@@ -336,23 +384,25 @@ const items = [
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <Link to='/productDetail'>            <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+            <Link to='/productDetail'>            
+            <div key={product.id} className="group relative border-2 p-2">
+              <div className="min:h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                 <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
+                  src={product.thumbnail}
+                  alt={product.thumbnail}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
+                    <a href={product.thumbnail}>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
+                      {product.brand}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <StarIcon className='w-6 h-5 inline text-yellow-400'/>
+                  <span className="mt-0 text-sm text-gray-500 align-bottom">{product.rating}</span>
                 </div>
                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
               </div>
