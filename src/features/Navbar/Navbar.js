@@ -67,7 +67,7 @@ function NavBar({ children }) {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                    <Link to='/cartpage'>
+                    <Link to='/cart'>
                       <button
                         className="rounded-full bg-white p-1 text-black hover:text-purple-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
@@ -180,7 +180,7 @@ function NavBar({ children }) {
                         {user.email}
                       </div>
                     </div>
-                    <Link to='cartpage'>
+                    <Link to='cart'>
                     <button
                       type="button"
                       className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
