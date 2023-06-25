@@ -6,6 +6,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectItems } from '../Cart/cartSlice';
 
 
 
@@ -30,6 +32,9 @@ function classNames(...classes) {
 }
 
 function NavBar({ children }) {
+
+  const cart = useSelector(selectItems)
+
   return (
     <>
       <div className="min-h-full">
@@ -80,9 +85,9 @@ function NavBar({ children }) {
                         />
                         </button>
                       </Link>
-                      <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-red-700 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-red-600/10">
-                        3
-                      </span>
+                   { cart.length?<span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-red-700 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-red-600/10">
+                        {cart.length}
+                      </span>:null}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -194,9 +199,9 @@ function NavBar({ children }) {
                     
                     </button>
                     </Link>
-                    <span className="inline-flex items-center rounded-md bg-red-50 mb-7 -ml-3 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                        3
-                    </span>
+                   {cart.length?<span className="inline-flex items-center rounded-md bg-red-50 mb-7 -ml-3 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                        {cart.length}
+                    </span>:null}
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (

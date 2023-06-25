@@ -1052,7 +1052,235 @@
       "email": "umair@gmail.com",
       "password": "Umair38@$",
       "confirmPassword": "Umair38@$",
+      "addresses": [
+        {
+          "name": "Umair",
+          "email": "umair@gmail.com",
+          "phone": "9136256836",
+          "street": "Amrut Nagar",
+          "city": "Thane",
+          "state": "Maharashtra",
+          "pinCode": "400612"
+        },
+        {
+          "name": "Rowan Atkinson",
+          "email": "Rowan@gmail.com",
+          "phone": "89121556651",
+          "street": "Michighan, sect-05, opp london bridge",
+          "city": "London",
+          "state": "London",
+          "pinCode": "894564"
+        }
+      ],
       "id": 1
+    }
+  ],
+  "cart": [
+    {
+      "title": "OPPOF19",
+      "description": "OPPO F19 is officially announced on April 2021.",
+      "price": 280,
+      "discountPercentage": 17.91,
+      "rating": 4.3,
+      "stock": 123,
+      "brand": "OPPO",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/4/1.jpg",
+        "https://i.dummyjson.com/data/products/4/2.jpg",
+        "https://i.dummyjson.com/data/products/4/3.jpg",
+        "https://i.dummyjson.com/data/products/4/4.jpg",
+        "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 1,
+      "id": 1
+    },
+    {
+      "title": "Infinix INBOOK",
+      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+      "price": 1099,
+      "discountPercentage": 11.83,
+      "rating": 4.54,
+      "stock": 96,
+      "brand": "Infinix",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/9/1.jpg",
+        "https://i.dummyjson.com/data/products/9/2.png",
+        "https://i.dummyjson.com/data/products/9/3.png",
+        "https://i.dummyjson.com/data/products/9/4.jpg",
+        "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+      ],
+      "quantity": 3,
+      "user": 1,
+      "id": 2
+    }
+  ],
+  "orders": [
+    {
+      "items": [
+        {
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/4/1.jpg",
+            "https://i.dummyjson.com/data/products/4/2.jpg",
+            "https://i.dummyjson.com/data/products/4/3.jpg",
+            "https://i.dummyjson.com/data/products/4/4.jpg",
+            "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/9/1.jpg",
+            "https://i.dummyjson.com/data/products/9/2.png",
+            "https://i.dummyjson.com/data/products/9/3.png",
+            "https://i.dummyjson.com/data/products/9/4.jpg",
+            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 1379,
+      "totalItems": 2,
+      "user": {
+        "email": "umair@gmail.com",
+        "password": "Umair38@$",
+        "confirmPassword": "Umair38@$",
+        "addresses": [
+          {
+            "name": "Umair",
+            "email": "umair@gmail.com",
+            "phone": "9136256836",
+            "street": "Amrut Nagar",
+            "city": "Thane",
+            "state": "Maharashtra",
+            "pinCode": "400612"
+          },
+          {
+            "name": "Rowan Atkinson",
+            "email": "Rowan@gmail.com",
+            "phone": "89121556651",
+            "street": "Michighan, sect-05, opp london bridge",
+            "city": "London",
+            "state": "London",
+            "pinCode": "894564"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": null,
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/4/1.jpg",
+            "https://i.dummyjson.com/data/products/4/2.jpg",
+            "https://i.dummyjson.com/data/products/4/3.jpg",
+            "https://i.dummyjson.com/data/products/4/4.jpg",
+            "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        },
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/9/1.jpg",
+            "https://i.dummyjson.com/data/products/9/2.png",
+            "https://i.dummyjson.com/data/products/9/3.png",
+            "https://i.dummyjson.com/data/products/9/4.jpg",
+            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+          ],
+          "quantity": 3,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 3577,
+      "totalItems": 4,
+      "user": {
+        "email": "umair@gmail.com",
+        "password": "Umair38@$",
+        "confirmPassword": "Umair38@$",
+        "addresses": [
+          {
+            "name": "Umair",
+            "email": "umair@gmail.com",
+            "phone": "9136256836",
+            "street": "Amrut Nagar",
+            "city": "Thane",
+            "state": "Maharashtra",
+            "pinCode": "400612"
+          },
+          {
+            "name": "Rowan Atkinson",
+            "email": "Rowan@gmail.com",
+            "phone": "89121556651",
+            "street": "Michighan, sect-05, opp london bridge",
+            "city": "London",
+            "state": "London",
+            "pinCode": "894564"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Umair",
+        "email": "umair@gmail.com",
+        "phone": "9136256836",
+        "street": "Amrut Nagar",
+        "city": "Thane",
+        "state": "Maharashtra",
+        "pinCode": "400612"
+      },
+      "id": 2
     }
   ]
 }

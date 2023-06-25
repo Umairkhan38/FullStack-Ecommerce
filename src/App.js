@@ -1,20 +1,19 @@
-import React from 'react';
+import {React,useEffect} from 'react';
 import './App.css';
-import Signup from './features/auth/Components/Signup';
 import Home from './Pages/Home';
 import LoginPage from './Pages/LoginPage';
-import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
 } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import SignupPage from './Pages/SignupPage';
 import CartPage from './Pages/CartPage';
 import CheckoutPage from './Pages/CheckoutPage';
 import ProductDetailPage from './Pages/ProductDetailPage';
 import Protected from './features/auth/Components/Protected';
+import { fetchItemsByUserIdAsync } from './features/Cart/cartSlice';
+import { selectLoggedInUser } from './features/auth/authSlice';
 
 
 const router = createBrowserRouter([
@@ -48,6 +47,16 @@ const router = createBrowserRouter([
 
 
 function App() {
+  const dispatch = useDispatch()
+  const user = useSelector(selectLoggedInUser)
+  useEffect(() => {
+    if(user){
+    dispatch(fetchItemsByUserIdAsync(user.id))
+}
+}, [dispatch,user?.id]);
+
+
+
   return (
     <div className="App">
     {/* <Home/> */}
