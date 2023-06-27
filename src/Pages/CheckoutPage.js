@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { updateItemsAsync,deleteItemFromCartAsync } from '../features/Cart/cartSlice';
@@ -6,7 +6,7 @@ import { selectItems } from '../features/Cart/cartSlice';
 import { Navigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
-import { createOrderAsync } from '../features/order/orderSlice';
+import { createOrderAsync, selectCurrentOrder } from '../features/order/orderSlice';
 
 
 
@@ -17,6 +17,7 @@ function Checkout() {
   const items = useSelector(selectItems);
   const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
   const user=useSelector(selectLoggedInUser)
+  const currentOrder = useSelector(selectCurrentOrder)
 
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
@@ -38,25 +39,42 @@ function Checkout() {
 
   const handleAddress=(e)=>{
     setSelectedAddress(user.addresses[e.target.value])
-    console.log(selectedAddress)
   }
 
   const handlePayment=(e)=>{
-    console.log(e.target.value);
     setPaymentMethod(e.target.value);
     
   }
 
   const handleOrder=(e)=>{
-    const order={items, totalAmount, totalItems, user, paymentMethod, selectedAddress}
-      dispatch(createOrderAsync(order))
+    if (selectedAddress && paymentMethod) {
+      const order = {
+        items,
+        totalAmount,
+        totalItems,
+        user,
+        paymentMethod,
+        selectedAddress,
+        status: 'pending' // other status can be delivered, received.
+      };
+      dispatch(createOrderAsync(order));
+      // need to redirect from here to a new page of order success.
+    } else {
+      // TODO : we can use proper messaging popup here
+      alert('Enter Address and Payment method')
+    }
   }
 
+  console.log("current order is ",currentOrder);
+
+
+  
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-       { !items.length?<Navigate to='/'></Navigate>
-       :
+       { !items.length&&<Navigate to='/'></Navigate>}
+
+       { currentOrder&&<Navigate to={`/orderSuccess/${currentOrder.id}`}></Navigate>}
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
@@ -395,7 +413,7 @@ function Checkout() {
             <div className="mt-6">
               <div
                 onClick={handleOrder}                
-                className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                className="flex items-center cursor-pointer justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
               >
                 Order Now
               </div>
@@ -418,7 +436,6 @@ function Checkout() {
         </div>
       </div>
         </div>
-       }
     </div>
   );
 }

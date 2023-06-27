@@ -1,42 +1,48 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { createOrder } from './orderAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { resetCart } from '../Cart/cartAPI';
+import { createOrder } from './orderAPI';
 
-const initialState = { 
+const initialState = {
   orders: [],
-  status:'idle'
-}
+  status: 'idle',
+  currentOrder: null,
+};
+//we may need more info of current order
+
+export const createOrderAsync = createAsyncThunk(
+  'order/createOrder',
+  async (order) => {
+    const response = await createOrder(order);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
 
 
-export const createOrderAsync=createAsyncThunk(
-  'order/createOrder',  
-  async(order)=>{
-    const response = await createOrder(order)
-    return response.json;
-  } 
 
-)
-
-
-const counterSlice = createSlice({
+export const orderSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
-    increment(state) {
-      state.value++
+    resetOrder: (state) => {
+      state.currentOrder = null;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createOrderAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(createOrderAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.orders.push(action.payload);
+        state.currentOrder = action.payload;
+      });
+  },
+});
 
-    extraReducers: (builder) => {
-      builder
-        .addCase(createOrderAsync.pending, (state) => {
-          state.status = 'loading';
-        })
-        .addCase(createOrderAsync.fulfilled, (state, action) => {
-          state.status = 'idle';
-          state.orders.push( action.payload);
-        })
-      }
-    }
-})
+export const { resetOrder } = orderSlice.actions;
 
-export const { increment } = counterSlice.actions
-export default counterSlice.reducer
+export const selectCurrentOrder = (state) => state.order.currentOrder;
+
+export default orderSlice.reducer;
