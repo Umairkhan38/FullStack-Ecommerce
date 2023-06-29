@@ -22,8 +22,8 @@ const navigation = [
   { name: 'Team', href: '#', current: false },
 ];
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', link: '/' },
+  { name: 'Your Profile', link: '/profile' },
+  { name: 'My orders', link: '/orders' },
   { name: 'Sign out', link: '/login' },
 ];
 
@@ -115,7 +115,7 @@ function NavBar({ children }) {
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
                                   <Link
-                                    href={item.link}
+                                    to={item.link}
                                     className={classNames(
                                       active ? 'bg-gray-100' : '',
                                       'block px-4 py-2 text-sm text-gray-700'
