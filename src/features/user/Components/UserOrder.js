@@ -1,11 +1,11 @@
 import {React , useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectLoggedInUser } from '../../auth/authSlice'
+import { selectUserInfo } from '../../auth/authSlice'
 import { fetchLoggedInUserOrdersAsync, selectUserOrders } from '../userSlice'
 import { Link } from 'react-router-dom'
 
 function UserOrder() {
-    const user = useSelector(selectLoggedInUser)
+    const user = useSelector(selectUserInfo)
     const order = useSelector(selectUserOrders)
     const dispatch = useDispatch()
     

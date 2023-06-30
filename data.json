@@ -1075,47 +1075,7 @@
       "id": 1
     }
   ],
-  "cart": [
-    {
-      "title": "Huawei P30",
-      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-      "price": 499,
-      "discountPercentage": 10.58,
-      "rating": 4.09,
-      "stock": 32,
-      "brand": "Huawei",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/5/1.jpg",
-        "https://i.dummyjson.com/data/products/5/2.jpg",
-        "https://i.dummyjson.com/data/products/5/3.jpg"
-      ],
-      "quantity": 2,
-      "user": 1,
-      "id": 1
-    },
-    {
-      "title": "MacBook Pro",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
-      "discountPercentage": 11.02,
-      "rating": 4.57,
-      "stock": 83,
-      "brand": "Apple",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "images": [
-        "https://i.dummyjson.com/data/products/6/1.png",
-        "https://i.dummyjson.com/data/products/6/2.jpg",
-        "https://i.dummyjson.com/data/products/6/3.png",
-        "https://i.dummyjson.com/data/products/6/4.jpg"
-      ],
-      "quantity": 2,
-      "user": 1,
-      "id": 2
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "items": [
@@ -1202,6 +1162,70 @@
       },
       "status": "pending",
       "id": 1
+    },
+    {
+      "items": [
+        {
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "Apple",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+          "images": [
+            "https://i.dummyjson.com/data/products/6/1.png",
+            "https://i.dummyjson.com/data/products/6/2.jpg",
+            "https://i.dummyjson.com/data/products/6/3.png",
+            "https://i.dummyjson.com/data/products/6/4.jpg"
+          ],
+          "quantity": 2,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 3498,
+      "totalItems": 2,
+      "user": {
+        "email": "umair@gmail.com",
+        "password": "Umair38@$",
+        "confirmPassword": "Umair38@$",
+        "addresses": [
+          {
+            "name": "Umair",
+            "email": "umair@gmail.com",
+            "phone": "9136256836",
+            "street": "Amrut Nagar",
+            "city": "Thane",
+            "state": "Maharashtra",
+            "pinCode": "400612"
+          },
+          {
+            "name": "Rowan Atkinson",
+            "email": "Rowan@gmail.com",
+            "phone": "89121556651",
+            "street": "Michighan, sect-05, opp london bridge",
+            "city": "London",
+            "state": "London",
+            "pinCode": "894564"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Rowan Atkinson",
+        "email": "Rowan@gmail.com",
+        "phone": "89121556651",
+        "street": "Michighan, sect-05, opp london bridge",
+        "city": "London",
+        "state": "London",
+        "pinCode": "894564"
+      },
+      "status": "pending",
+      "id": 2
     }
   ]
 }

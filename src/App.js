@@ -13,10 +13,12 @@ import CheckoutPage from './Pages/CheckoutPage';
 import ProductDetailPage from './Pages/ProductDetailPage';
 import Protected from './features/auth/Components/Protected';
 import { fetchItemsByUserIdAsync } from './features/Cart/cartSlice';
-import { selectLoggedInUser } from './features/auth/authSlice';
+import { selectUserInfo } from './features/auth/authSlice';
 import PageNotFound from './Pages/404';
 import OrderSuccessPage from './Pages/OrderSuccessPage';
 import UserOrderPage from './features/user/Components/UserOrder';
+import UserProfilePage from './Pages/UserProfilePage';
+import { fetchLoggedInUserAsync } from './features/user/userSlice';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,10 @@ const router = createBrowserRouter([
     element:<UserOrderPage />
   },
   {
+    path: "/profile",
+    element:<UserProfilePage />
+  },
+  {
     path: "*",
     element: <PageNotFound />
   }
@@ -62,10 +68,11 @@ const router = createBrowserRouter([
 
 function App() {
   const dispatch = useDispatch()
-  const user = useSelector(selectLoggedInUser)
+  const user = useSelector(selectUserInfo)
   useEffect(() => {
     if(user){
     dispatch(fetchItemsByUserIdAsync(user.id))
+    dispatch(fetchLoggedInUserAsync(user.id))
 }
 }, [dispatch,user?.id]);
 

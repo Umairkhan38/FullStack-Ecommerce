@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import {createUserAsync,selectLoggedInUser} from '../authSlice'
+import {createUserAsync,selectUserInfo} from '../authSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const dispatch = useDispatch()
   console.log(errors);
-  const user = useSelector(selectLoggedInUser)
+  const user = useSelector(selectUserInfo)
 
   return (
     <div >

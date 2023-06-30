@@ -7,7 +7,7 @@ import {
 } from '../authSlice';
 import styles from '../auth.module.css';
 import { Link, Navigate } from 'react-router-dom';
-import { selectLoggedInUser } from '../authSlice';
+import { selectUserInfo } from '../authSlice';
 import { useForm } from "react-hook-form";
 import { checkUserAsync } from '../authSlice';
 import { selectedError } from '../authSlice'; 
@@ -17,7 +17,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   console.log(errors);
-  const user = useSelector(selectLoggedInUser)
+  const user = useSelector(selectUserInfo)
   const error = useSelector(selectedError)
   
 

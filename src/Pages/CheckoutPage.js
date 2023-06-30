@@ -5,7 +5,7 @@ import { updateItemsAsync,deleteItemFromCartAsync } from '../features/Cart/cartS
 import { selectItems } from '../features/Cart/cartSlice';
 import { Navigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from '../features/auth/authSlice';
+import { selectUserInfo, updateUserAsync } from '../features/auth/authSlice';
 import { createOrderAsync, selectCurrentOrder } from '../features/order/orderSlice';
 
 
@@ -16,7 +16,7 @@ function Checkout() {
   const dispatch=useDispatch();
   const items = useSelector(selectItems);
   const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
-  const user=useSelector(selectLoggedInUser)
+  const user=useSelector(selectUserInfo)
   const currentOrder = useSelector(selectCurrentOrder)
 
   const totalAmount = items.reduce(
