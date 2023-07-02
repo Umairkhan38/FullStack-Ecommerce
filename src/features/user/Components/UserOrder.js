@@ -1,7 +1,6 @@
 import {React , useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectUserInfo } from '../../auth/authSlice'
-import { fetchLoggedInUserOrdersAsync, selectUserOrders } from '../userSlice'
+import { fetchLoggedInUserOrderAsync, selectUserInfo, selectUserOrders } from '../userSlice'
 import { Link } from 'react-router-dom'
 
 function UserOrder() {
@@ -10,7 +9,7 @@ function UserOrder() {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        dispatch(fetchLoggedInUserOrdersAsync(user.id))    
+        dispatch(fetchLoggedInUserOrderAsync(user.id))    
     }, []);
     console.log("order Object is ",order);
     

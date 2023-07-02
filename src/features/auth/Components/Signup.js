@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import {createUserAsync,selectUserInfo} from '../authSlice'
+import {createUserAsync,selectLoggedInUser,selectUserInfo} from '../authSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const dispatch = useDispatch()
   console.log(errors);
-  const user = useSelector(selectUserInfo)
+  const user = useSelector(selectLoggedInUser)
 
   return (
     <div >
@@ -59,9 +59,9 @@ function Signup() {
                  Password
                </label>
                <div className="text-sm">
-                 <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                 <Link to="/forgot" className="font-semibold text-indigo-600 hover:text-indigo-500">
                    Forgot password?
-                 </a>
+                 </Link>
                </div>
              </div>
              <div className="mt-2">

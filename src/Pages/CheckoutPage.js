@@ -5,9 +5,9 @@ import { updateItemsAsync,deleteItemFromCartAsync } from '../features/Cart/cartS
 import { selectItems } from '../features/Cart/cartSlice';
 import { Navigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import { selectUserInfo, updateUserAsync } from '../features/auth/authSlice';
+import { updateUserAsync } from '../features/auth/authSlice';
 import { createOrderAsync, selectCurrentOrder } from '../features/order/orderSlice';
-
+import { selectUserInfo } from '../features/user/userSlice';
 
 
 
@@ -330,10 +330,10 @@ function Checkout() {
                 </div>
               </div>
             </div>
-
-          
           </form>
         </div>
+      
+      
         <div className="lg:col-span-2">
         <div className="mx-auto mt-12 bg-white max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="border-t border-gray-200 px-2 py-3 sm:px-4">

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   increment,
   incrementAsync,
+  selectLoggedInUser,
   
 } from '../authSlice';
 import styles from '../auth.module.css';
@@ -17,7 +18,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   console.log(errors);
-  const user = useSelector(selectUserInfo)
+  const user = useSelector(selectLoggedInUser)
   const error = useSelector(selectedError)
   
 
@@ -68,9 +69,9 @@ export default function Login() {
                  Password
                </label>
                <div className="text-sm">
-                 <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                 <Link to="/forgot" className="font-semibold text-indigo-600 hover:text-indigo-500">
                    Forgot password?
-                 </a>
+                 </Link>
                </div>
              </div>
              <div className="mt-2">
